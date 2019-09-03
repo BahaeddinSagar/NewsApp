@@ -42,26 +42,30 @@ public class DisplayNewsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_news);
+        // intilize sharedPrefrence for getting which section to read
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         loadingIndicator = findViewById(R.id.loading_indicator);
+        //Listview and it's accessories
         emptyTextView = findViewById(R.id.textView);
         newsListView = findViewById(R.id.NewsListView);
         arrayAdapter = new NewsArrayAdapter(this, 0, new ArrayList<News>());
 
         newsListView.setAdapter(arrayAdapter);
         newsListView.setEmptyView(emptyTextView);
-
+        // making the HTTP request through function to be called from anywhere
         makeNetworkRequest();
 
     }
 
     private void makeNetworkRequest() {
+        //checking network connectivity
         ConnectivityManager cm =
                 (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting()){
+            // using loaders to make the request
             android.app.LoaderManager manager = getLoaderManager();
             manager.initLoader(NEWS_LOADER_ID, null, this).forceLoad();
         } else {
@@ -73,6 +77,7 @@ public class DisplayNewsActivity extends AppCompatActivity
     @NonNull
     @Override
     public Loader<ArrayList<News>> onCreateLoader(int id, @Nullable Bundle args) {
+        // if all sections are required do not edit the URL, else add the required section only
         String sectionRequested = sharedPreferences.getString("sectionKey","all");
         if (!sectionRequested.equals("all")) {
             Uri uri = Uri.parse(GUARDIANURL);
@@ -115,6 +120,7 @@ public class DisplayNewsActivity extends AppCompatActivity
                 return null;
             }
             try {
+                // using the HelperFunction class to make the HTTP request
                 result = HelperFunctions.getNewsFromGaurdian(urlString);
             } catch (JSONException e) {
                 e.printStackTrace();

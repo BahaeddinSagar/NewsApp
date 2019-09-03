@@ -26,7 +26,9 @@ public class HelperFunctions {
     static ArrayList<News> getNewsFromGaurdian(String stringUrl) throws JSONException, IOException {
         URL url = makeURL(stringUrl);
         if (url != null) {
+            // make HTTP request
             String responce = makeHTTPRequest(url);
+            // get Array from responce
             return makeArrayFromJSON(responce);
         } else {
             return null;
@@ -58,9 +60,10 @@ public class HelperFunctions {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
-
+            // read response if OK status only
             if (urlConnection.getResponseCode() == 200) {
                 inputStream = urlConnection.getInputStream();
+                // read from inputstream to String
                 jsonResponce = readFromInput(inputStream);
             } else {
                 Log.d(TAG, "makeHTTPRequest: " + urlConnection.getResponseCode() +
