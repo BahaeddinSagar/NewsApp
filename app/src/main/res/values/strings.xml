@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="cannot_connect_to_server">Cannot Connect to Server</string>
+    <string name="cannotConnectToServer">Cannot Connect to Server</string>
+    <string name="connectivityissue">Connectivity Issue</string>
+
+    <!-- array for sections !-->
+    <string name="all">all</string>
+    <string name="about">about</string>
+    <string name="football">football</string>
+    <string name="books">books</string>
+    <string name="business">business</string>
+    <string name="community">community</string>
+    <string name="culture">culture</string>
+    <string name="education">education</string>
+    <string name="environment">environment</string>
+    <string name="fashion">fashion</string>
+    <string name="film">film</string>
+    <string name="food">food</string>
+    <string name="games">games</string>
+
+    <string name="sectiontitle">choose sections</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settingsTitle">Settings</string>
+    <string name="reload">reload</string>
+    <string name="welcome">Welcome to the News App, where we make use of Guardian API   We also make use of Prefrence Fragment to get certain sections only</string>
+    <string name="check_the_news">Check the News</string>
+
+
+</resources>

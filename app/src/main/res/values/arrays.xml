@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sections">
+        <item>@string/all</item>
+        <item>@string/about</item>
+        <item>@string/football</item>
+        <item>@string/food</item>
+        <item>@string/business</item>
+        <item>@string/books</item>
+        <item>@string/community</item>
+        <item>@string/culture</item>
+        <item>@string/environment</item>
+        <item>@string/education</item>
+        <item>@string/fashion</item>
+        <item>@string/film</item>
+        <item>@string/games</item>
+    </string-array>
+
+</resources>
